@@ -32,7 +32,7 @@ def home():
        if not os.path.exists("static/videos"):
          os.makedirs("static/videos")
        
-       url = f"https://www.google.com/search?q={paragraphs[0]},{Title}&tbm=isch&tbs=isz:l"
+       url = f"https://www.google.com/search?q={paragraphs[0]},{Title}&tbm=isch"
        response = requests.get(url)
        soup = BeautifulSoup(response.text, "html.parser")
        image_tags = soup.find_all("img")
@@ -199,7 +199,25 @@ def merge():
   print("The Final Video Has Been Created Successfully!")
   
     
+@app.route('/AiGenerate', methods=['POST'])
+def AiGenerate():
+    inpTxts = request.json.get('paragraph')
 
+    # Generates the image using Lightning.Ai muse api
+    response = requests.post("https://ulhcn-01gd3c9epmk5xj2y9a9jrrvgt8.litng-ai-03.litng.ai/api/predict", json={
+    "prompt": inpTxts,
+    "high_quality": "true"
+    })
+
+    AIimgUrl = response.json()['image']
+
+    #Downloads the image
+    filename = "static/teditImages/0.jpg"
+    urllib.request.urlretrieve(AIimgUrl, filename)
+
+
+    # Return the JSON response with the image URL
+    return jsonify({'img0': AIimgUrl})
 
  
 if __name__ == '__main__':

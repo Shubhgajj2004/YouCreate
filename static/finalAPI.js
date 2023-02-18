@@ -98,12 +98,62 @@ nextBtn.addEventListener("click", function(event) {
 //   });
 
 
+
 const images = document.querySelectorAll(".final-image");
 
 images.forEach((image) => {
   image.addEventListener("click", function () {
     idImg = image.id;
+  });
+});
 
-    // console.log(`Selected image id: ${id}`);
+
+
+//Generate  Images using AI
+
+
+// get the button element
+const aiImgBtn = $('#aiImgBtn');
+
+// add a click event listener to the button
+aiImgBtn.on('click', () => {
+  // get the image elements to hide
+  const img0 = $('#0');
+  const img1 = $('#1');
+  const img2 = $('#2');
+  const img3 = $('#3');
+  const img4 = $('#4');
+  const img5 = $('#5');
+  const img6 = $('#6');
+
+  // set the display property of the images to "none"
+  img0.attr('src', "static/spinner.png");
+  img1.css('display', 'none');
+  img2.css('display', 'none');
+  img3.css('display', 'none');
+  img4.css('display', 'none');
+  img5.css('display', 'none');
+  img6.css('display', 'none');
+
+  // make an AJAX request to the Flask API
+  $.ajax({
+    url: '/AiGenerate',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ 'paragraph': $('#paragraph').val() }),
+    success: function(data) {
+      // update the source attribute of the image elements with the new image URLs
+      const img0 = $('#0');
+      // const img1 = $('#1');
+      // const img2 = $('#2');
+      // const img3 = $('#3');
+      img0.attr('src', data.img0);
+      // img1.attr('src', data.img1);
+      // img2.attr('src', data.img2);
+      // img3.attr('src', data.img3);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+      console.log('Error: ' + errorThrown);
+    }
   });
 });
