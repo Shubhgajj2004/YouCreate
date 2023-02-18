@@ -21,7 +21,7 @@ def home():
        story = request.form.get("story")
 
         # Split the text by , and .
-       paragraphs = re.split(r"[.,]", story)
+       paragraphs = re.split(r"[.]", story)
        sizePara = len(paragraphs)
 
        #Create Necessary Folders
@@ -73,7 +73,7 @@ def screen():
     story = request.form['story']
     title = request.form['title']
 
-    paragraphs = re.split(r'[,.]', story)
+    paragraphs = re.split(r'[.]', story)
 
     if index >= len(paragraphs) - 1:
         # We've reached the end of the story, so redirect to the index page
