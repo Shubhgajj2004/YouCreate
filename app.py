@@ -32,7 +32,7 @@ def home():
        if not os.path.exists("static/videos"):
          os.makedirs("static/videos")
        
-       print(paragraphs[0], paragraphs[1], paragraphs[2])
+      #  print(paragraphs[0], paragraphs[1], paragraphs[2])
        url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:lt,islt:qsvga"
        response = requests.get(url)
        soup = BeautifulSoup(response.text, "html.parser")
@@ -63,7 +63,7 @@ def home():
         except:
             print(f"Failed to download {url}")
 
-       print(paragraphs[0])
+      #  print(paragraphs[0])
        return render_template('imageselect.html', index=0, paragraph=paragraphs[0], img0=pathTImg+"/0.jpg", img1=pathTImg+"/1.jpg", img2=pathTImg+"/2.jpg", img3=pathTImg+"/3.jpg", img4=pathTImg+"/4.jpg", img5=pathTImg+"/5.jpg")
        
      return render_template("index.html")
