@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Split Story</title>
+  </head>
+  <body>
+    <h1>Screen {{ index + 1 }}</h1>
+    <p>{{ paragraph }}</p>
+    <form action="/screen" method="post">
+      <input type="hidden" name="index" value="{{ index }}">
+      <input type="hidden" name="story" value="{{ request.form['story'] }}">
+      <input type="submit" value="Next">
+    </form>
+  </body>
+</html>
