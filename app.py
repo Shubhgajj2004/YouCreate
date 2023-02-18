@@ -20,13 +20,13 @@ def home():
         # Split the text by , and .
        paragraphs = re.split(r"[,.]", story)
 
-       return render_template('temp.html', index=0, paragraph=paragraphs[0])
+       return render_template('editImage.html', index=0, paragraph=paragraphs[0])
        
      return render_template("index.html")
 
-@app.route('/getImage/<int:index>', methods=['GET', 'POST'])
-def getImage(story, index):
-    return render_template("temp.html", result=story[index], index=index, data=story)
+# @app.route('/getImage/<int:index>', methods=['GET', 'POST'])
+# def getImage(story, index):
+#     return render_template("temp.html", result=story[index], index=index, data=story)
 
 
 @app.route('/screen', methods=['POST'])
@@ -41,8 +41,8 @@ def screen():
 
     # Render the next screen
     next_index = index + 1
-    next_paragraph = paragraphs[next_index]
-    return render_template('temp.html', index=next_index, paragraph=next_paragraph)
+    next_paragraph = paragraphs[next_index] 
+    return render_template('editImage.html', index=next_index, paragraph=next_paragraph)
 
  
 if __name__ == '__main__':
