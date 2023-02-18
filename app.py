@@ -32,7 +32,7 @@ def home():
        if not os.path.exists("static/videos"):
          os.makedirs("static/videos")
        
-       url = f"https://www.google.com/search?q={paragraphs[0]},{Title}&tbm=isch"
+       url = f"https://www.google.com/search?q={paragraphs[0]},{Title}&tbm=isch&tbs=isz:l"
        response = requests.get(url)
        soup = BeautifulSoup(response.text, "html.parser")
        image_tags = soup.find_all("img")
