@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="" class="imgSelect">
+    <!-- <form action="" class="imgSelect"> -->
         <div class="header">
             <h1 class="heading">YouCreate</h1>
         </div>
@@ -53,10 +53,17 @@
             </div>
             <div class="bottomNav">
                     <button class="next"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
-                    <button class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+
+                    <form class="function" id="editForm" name="editForm" action="/screen" method="POST">
+                        <input type="hidden" name="index" value="{{index}}">
+                        <input type="hidden" name="story" value="{{request.form['story']}}">
+                        <input type="hidden" name="submit_type" id="submit_type" value="">
+                        <!-- <button type="submit" name="submit1" class="navigation" id="nextBtn">Next</button> -->
+                        <button class="next" type="submit" name="submit1" id="nextBtn">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </form>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 </body>
 
 </html>
