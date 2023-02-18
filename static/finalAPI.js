@@ -35,6 +35,7 @@
 // });
 
 var idImg = "0"
+const para = document.getElementById("paragraph").value;
 
 
 const nextBtn = document.getElementById("nextBtn");
@@ -57,6 +58,10 @@ nextBtn.addEventListener("click", function(event) {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     // const requestBody = JSON.stringify({ idImg: idImg });
 
+    // Get the value from the element with ID 'ind'
+    const indValue = document.getElementById("ind").value;
+    
+    const title = document.getElementById("title").value;
 
     // xhr.send(requestBody);
     xhr.onreadystatechange = function() {
@@ -66,7 +71,7 @@ nextBtn.addEventListener("click", function(event) {
         }
     };
 
-    const requestBody = JSON.stringify({ idImg: idImg });
+    const requestBody = JSON.stringify({ idImg: idImg, ind: indValue, para:para, title:title });
     xhr.send(requestBody);
 });
 

@@ -17,13 +17,15 @@
         <div class="main-content">
             <div class="top">
                 <div class="tops cur-line">
-                    <textarea class="cur" contenteditable="false">{{paragraph}}</textarea>
+                    <input type="hidden" id="ind" value="{{index}}"/>
+                    <!-- <input type="hidden" id="title" value="{{Title}}"/> -->
+                    <textarea class="cur" contenteditable="false" id="paragraph">{{paragraph}}</textarea>
                 </div>
                 <div class="tops upload">
                     <button><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
                 </div>
                 <div class="tops generate-ai">
-                    <button class="generate" value="">Generate AI Image</button>
+                    <button class="generate" id="aiImgBtn" value="">Generate AI Image</button>
                 </div>
             </div>
             <div class="center">
@@ -52,12 +54,13 @@
                 </div>
             </div>
             <div class="bottomNav">
-                    <button class="next"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                    <button class="previous"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
 
                     <form class="function" id="editForm" name="editForm" action="/screen" method="POST">
                         <input type="hidden" name="index" value="{{index}}">
                         <input type="hidden" name="story" value="{{request.form['story']}}">
                         <input type="hidden" name="submit_type" id="submit_type" value="">
+                        <input type="hidden" name="title" id="title" value="{{Title}}"/>
                         <!-- <button type="submit" name="submit1" class="navigation" id="nextBtn">Next</button> -->
                         <button class="next" type="submit" name="submit1" id="nextBtn">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                     </form>
