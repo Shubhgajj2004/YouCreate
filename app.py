@@ -33,7 +33,7 @@ def home():
          os.makedirs("static/videos")
        
       #  print(paragraphs[0], paragraphs[1], paragraphs[2])
-       url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:lt,islt:qsvga"
+       url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:l"
        response = requests.get(url)
        soup = BeautifulSoup(response.text, "html.parser")
        image_tags = soup.find_all("img")
@@ -88,7 +88,7 @@ def screen():
     next_paragraph = paragraphs[next_index] 
 
     #Webcreaping of images
-    url = f"https://www.google.com/search?q={next_paragraph}&tbm=isch&tbs=isz:lt,islt:qsvga"
+    url = f"https://www.google.com/search?q={next_paragraph}&tbm=isch&tbs=isz:xxlarge,islt:qsvga"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     image_tags = soup.find_all("img")
