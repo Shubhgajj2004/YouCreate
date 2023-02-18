@@ -1,13 +1,12 @@
-# import urllib.request
-# from PIL import Image
-# import requests
-# import json
+import urllib.request
+from PIL import Image
+import json
 import requests
 from bs4 import BeautifulSoup
 
 import re, os
-# from gtts import gTTS
-# from moviepy.editor import *
+from gtts import gTTS
+from moviepy.editor import *
 from flask import Flask , render_template , request, url_for , redirect , jsonify
 
 app = Flask(__name__)
@@ -99,15 +98,6 @@ def screen():
     if not os.path.exists("static/teditImages"):
       os.makedirs("static/teditImages")
 
-    # for i, url in enumerate(urls):
-    #      try:
-    #          response = requests.get(url, stream=True)
-    #          file = open(os.path.join(pathTImg, f"{i}.jpg"), "wb")
-    #          for chunk in response.iter_content(1024):
-    #              file.write(chunk)
-    #          file.close()
-    #      except:
-    #          print(f"Failed to download {url}")
     for i, url in enumerate(urls):
         try:
             response = requests.get(url, stream=True)
@@ -138,8 +128,11 @@ def finalImg():
     if not os.path.exists("static/finalized"):
       os.makedirs("static/finalized")
     
+    #getting the id of the image
     idImg = request.json.get('idImg')
-    print(idImg)
+    imgUrl = "static/teditImages/"+idImg+".jpg"
+    
+    
     
     
 

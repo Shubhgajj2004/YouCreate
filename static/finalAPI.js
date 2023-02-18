@@ -34,7 +34,7 @@
 //   }
 // });
 
-var idImg = "img0"
+var idImg = "0"
 
 
 const nextBtn = document.getElementById("nextBtn");
