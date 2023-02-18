@@ -2,6 +2,8 @@
 # from PIL import Image
 # import requests
 # import json
+import requests
+from bs4 import BeautifulSoup
 
 import re, os
 # from gtts import gTTS
@@ -19,6 +21,26 @@ def home():
 
         # Split the text by , and .
        paragraphs = re.split(r"[,.]", story)
+
+       url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:lt,islt:qsvga"
+       response = requests.get(url)
+       soup = BeautifulSoup(response.text, "html.parser")
+       image_tags = soup.find_all("img")
+       urls = [img["src"] for img in image_tags][1:7]
+
+        # Step 6: Download the images
+       if not os.path.exists("static/teditImages"):
+         os.makedirs("static/teditImages")
+
+       for i, url in enumerate(urls):
+            try:
+                response = requests.get(url, stream=True)
+                file = open(os.path.join("static/teditImages", f"{i}.jpg"), "wb")
+                for chunk in response.iter_content(1024):
+                    file.write(chunk)
+                file.close()
+            except:
+                print(f"Failed to download {url}")
 
        return render_template('editImage.html', index=0, paragraph=paragraphs[0])
        
@@ -42,6 +64,30 @@ def screen():
     # Render the next screen
     next_index = index + 1
     next_paragraph = paragraphs[next_index] 
+
+    #Webcreaping of images
+    url = f"https://www.google.com/search?q={next_paragraph}&tbm=isch&tbs=isz:lt,islt:qsvga"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    image_tags = soup.find_all("img")
+    urls = [img["src"] for img in image_tags][1:7]
+
+    # Step 6: Download the images
+    if not os.path.exists("static/teditImages"):
+        os.makedirs("static/teditImages")
+
+    for i, url in enumerate(urls):
+        try:
+            response = requests.get(url, stream=True)
+            file = open(os.path.join("tImage", f"{i}.jpg"), "wb")
+            for chunk in response.iter_content(1024):
+                file.write(chunk)
+            file.close()
+        except:
+            print(f"Failed to download {url}")
+
+
+
     return render_template('editImage.html', index=next_index, paragraph=next_paragraph)
 
  
