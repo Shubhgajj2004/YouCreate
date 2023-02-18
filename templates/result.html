@@ -4,5 +4,12 @@
         <p>{{ original }}</p>
         <h1>Grammar Enhanced</h1>
         <p>{{ enhanced }}</p>
+        <table>
+            {% for text in texts %}
+            <tr>
+                <th>{{ text }}</th>
+            </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>

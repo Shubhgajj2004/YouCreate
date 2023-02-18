@@ -1,4 +1,5 @@
 from sapling import SaplingClient
+import re
 from flask import Flask , render_template , request
 
 API_KEY = 'NLDUU0EBQN7S97RNAW0AYT35FFMO3BNY'
@@ -18,6 +19,7 @@ def home():
 def result(original):
     if request.method == "POST":
         text = str(original)
+        edits = client.edits(original,session_id='test_session')
         edits = sorted(edits, key=lambda e: -1 * (e['sentence_start'] + e['start']))
         for edit in edits:
           start = edit['sentence_start'] + edit['start']
@@ -26,7 +28,12 @@ def result(original):
           #   print(f'Edit start:{start}/end:{end} outside of bounds of text:{text}')
           #   continue
           text = text[: start] + edit['replacement'] + text[end:]
-        return render_template('result.html',original = original,enhanced = text)
+          texts = re.split(r"[,.]", text)
+          for i in texts:
+              l = len(i.split(" "))
+              if l < 10:
+                  texts.remove(i)
+        return render_template('result.html',original = original,enhanced = text,texts = texts)
 
 if __name__ == '__main__':
     app.run()
