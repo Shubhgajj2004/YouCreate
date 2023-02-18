@@ -17,9 +17,7 @@
         <div class="main-content">
             <div class="top">
                 <div class="tops cur-line">
-                    <textarea rows="20" name="comment[text]" 
-                    id="comment_text" cols="40" class="cur" autocomplete="off" role="textbox" 
-                    aria-autocomplete="list" aria-haspopup="true">Go to our CSS resize Reference to learn more the resize property.  Previous Next  · Get started with your own</textarea>
+                    <textarea class="cur" contenteditable="false">{{paragraph}}</textarea>
                 </div>
                 <div class="tops upload">
                     <button><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
@@ -31,24 +29,24 @@
             <div class="center">
                 <div class="topimg">
                     <div class="grid-image">
-                        <img class="final-image" src="dummy.jpg" alt="" height="240px" width="360px" />
+                        <img class="final-image" id="img0" src="{{img0}}" alt="" height="240px" width="360px" />
                     </div>
                     <div class="grid-image">
-                        <img class="final-image" src="dummy.jpg" alt="" height="240px" width="360px" />
+                        <img class="final-image" id="img1" src="{{img1}}" alt="" height="240px" width="360px" />
                     </div>
                     <div class="grid-image">
-                        <img class="final-image" src="dummy.jpg" alt="" height="240px" width="360px"/>
+                        <img class="final-image" id="img2" src="{{img2}}" alt="" height="240px" width="360px"/>
                     </div>
                 </div>
                 <div class="btmimg">
                     <div class="grid-image">
-                        <img class="final-image" src="dummy.jpg" alt="" height="240px" width="360px"/>
+                        <img class="final-image" id="img3" src="{{img3}}" alt="" height="240px" width="360px"/>
                     </div>
                     <div class="grid-image">
-                        <img class="final-image" src="dummy.jpg" alt="" height="240px" width="360px"/>
+                        <img class="final-image" id="img4" src="{{img4}}" alt="" height="240px" width="360px"/>
                     </div>
                     <div class="grid-image">
-                        <img class="final-image" src="dummy.jpg" alt="" height="240px" width="360px"/>
+                        <img class="final-image" id="img5" src="{{img5}}" alt="" height="240px" width="360px"/>
                     </div>
                 </div>
                 </div>
@@ -65,6 +63,9 @@
                     </form>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="{{url_for('static' , filename='finalAPI.js')}}"></script>
     <!-- </form> -->
 </body>
 

@@ -34,6 +34,8 @@
 //   }
 // });
 
+var idImg = "img0"
+
 
 const nextBtn = document.getElementById("nextBtn");
 const editForm = document.getElementById("editForm");
@@ -52,12 +54,51 @@ nextBtn.addEventListener("click", function(event) {
     // Send an AJAX request to the /finalImg endpoint
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "/finalImg");
-    xhr.send();
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    // const requestBody = JSON.stringify({ idImg: idImg });
+
+
+    // xhr.send(requestBody);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log(xhr.responseText);
             // Do something with the response from the Flask API
         }
     };
+
+    const requestBody = JSON.stringify({ idImg: idImg });
+    xhr.send(requestBody);
 });
 
+
+
+// const images = document.querySelectorAll('.final-image');
+//   images.forEach((image) => {
+//     image.addEventListener('click', (event) => {
+//       const selectedImageId = event.target.id;
+//       fetch('/finalImg', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ selectedImageId: selectedImageId })
+//       })
+//       .then(response => {
+//         // handle the response from the Flask API
+//       })
+//       .catch(error => {
+//         // handle the error
+//       });
+//     });
+//   });
+
+
+const images = document.querySelectorAll(".final-image");
+
+images.forEach((image) => {
+  image.addEventListener("click", function () {
+    idImg = image.id;
+
+    // console.log(`Selected image id: ${id}`);
+  });
+});

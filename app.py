@@ -138,6 +138,10 @@ def finalImg():
     if not os.path.exists("static/finalized"):
       os.makedirs("static/finalized")
     
+    idImg = request.json.get('idImg')
+    print(idImg)
+    
+    
 
 
  
