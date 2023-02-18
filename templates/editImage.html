@@ -9,34 +9,50 @@
     <title>Edit - YouCreate</title>
 </head>
 <body>
-    <div class="form ">
-      <form>    
+    <div class="form">
+         
     <div class="title">Senetence</div>
     <div class="input-container">
-      <input id="Sentence-display" class="input" type="text" placeholder={{paragraph}}/>
+      <!-- <input id="Sentence-display" class="input" type="text" placeholder={{paragraph}}/> -->
+      <textarea id="Sentence-display" class="input" type="text">{{paragraph}}</textarea>
       <label for="Sentence-display" class="placeholder"></label>
       </div>
-      <form class="function" >
-        <button  type="submit"class="navigation">Previous</button>
-        <button  type="submit" class="navigation">Next</button>
-      </form>
+      <!-- <form class="function" id="editForm" name="editForm" action="/screen" method="POST">
+        <input type="hidden" name="index" value="{{index}}">
+        <input type="hidden" name="story" value="{{request.form['story']}}">
+        <button type="submit" name="submit1" class="navigation" id="nextBtn">Next</button>
+      </form> -->
+
+      <form class="function" id="editForm" name="editForm" action="/screen" method="POST">
+        <input type="hidden" name="index" value="{{index}}">
+        <input type="hidden" name="story" value="{{request.form['story']}}">
+        <input type="hidden" name="submit_type" id="submit_type" value="">
+        <button type="submit" name="submit1" class="navigation" id="nextBtn">Next</button>
+    </form>
+    
     </div>
   </form>
   <div class="images-container">  
   <div class="indiviual-image">
-   <img class="final-image" src="dummy_image.jpeg" alt="" height="200px" width="150px">
+   <img class="final-image" src={{img0}} alt="" height="200px" width="150px">
   </div>
   <div class="indiviual-image">
-    <img  class="final-image" src="dummy_image.jpeg" alt="" height="200px" width="150px">
+    <img  class="final-image" src={{img1}} alt="" height="200px" width="150px">
   </div>
   <div class="indiviual-image">
-    <img  class="final-image" src="dummy_image.jpeg" alt="" height="200px" width="150px">
+    <img  class="final-image" src={{img3}} alt="" height="200px" width="150px">
   </div>
   </div>
-  <form class="btn-container">
+  <!-- <form class="btn-container">
     <button class="bottom-btn">Generate from AI</button>
     <button class="bottom-btn">Browse</button>
     <button class="bottom-btn">Get from Web</button>
-  </form>>
+  </form> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="{{url_for('static' , filename='finalAPI.js')}}"></script>
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+
+
 </body>
 </html>
