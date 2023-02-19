@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit title</title>
+  </head>
+  <body>
+    <h2>title</h2>
+    <p>{{Title}}</p>
+    <h2>description</h2>
+    <p>{{description}}</p>
+    <h2>Tags</h3>
+    <p>{{Tag}}</p>
+    
+    <form action="/aiTitle" method="post">
+      <input type="hidden" name="Title" value="{{Title}}"/>
+      <input type="hidden" name="story" value="{{ request.form['story'] }}"/>
+      <input type="submit" value="Next"/>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap");
+
+.title {
+  font-family: "Rouge Script", cursive;
+  font-size: 60px;
+  padding: 10px;
+  margin-left: 70px;
+  position: relative;
+  margin-top:60px;
+
+}
+#my-video
+{
+    height: 400px;
+    position: relative;
+    left: 30%;
+    top: 30%;
+    background-color: #55597f;
+    padding: 0px 10px;
+
+
+}
+body
+{
+    background-color: rgb(18, 24, 45);
+}
+.title{
+    
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px rgb(238, 45, 45) ,
+      0 0 80px rgb(243, 149, 149) ,
+      0 0 90px rgb(243, 149, 149) ,
+      0 0 100px rgb(243, 149, 149) ,
+      0 0 150px rgb(243, 149, 149) ;
+  }
+  .home
+  {
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    left: 80%;
+    top: 80%;
+    padding: 10px;
+    font-weight: 800;
+    width: 90px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .btn-1 {
+    border: none;
+    background-color: #ff9aff;
+    box-shadow: 0 0 5px #ef97e8;
+  }
+  .btn-1:hover {
+     box-shadow: 0 0 10px #ef97e8, 0 0 20px #ef97e8, 0 0 20px #fff inset;
+  }
