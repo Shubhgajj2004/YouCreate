@@ -13,7 +13,7 @@ import openai
 # new lib
 from bing_image_downloader import downloader
 
-openai.api_key = "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"
+openai.api_key = "YOUR_KEY"
 
 app = Flask(__name__)
 
