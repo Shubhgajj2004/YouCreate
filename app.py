@@ -10,7 +10,10 @@ from moviepy.editor import *
 from flask import Flask , render_template , request, url_for , redirect , jsonify
 import openai
 
-openai.api_key = "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"
+# new lib
+from bing_image_downloader import downloader
+
+openai.api_key = "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"
 
 app = Flask(__name__)
 
@@ -114,36 +117,63 @@ def aiTitle():
        # Split the text by , and .
        paragraphs = re.split(r"[.,]", story)
 
-       url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:l"
-       response = requests.get(url)
-       soup = BeautifulSoup(response.text, "html.parser")
-       image_tags = soup.find_all("img")
-       urls = [img["src"] for img in image_tags][1:7]
-      
+        #imps
+      #  url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:l,ic:color"
+      #  response = requests.get(url)
+      #  soup = BeautifulSoup(response.text, "html.parser")
+      #  image_tags = soup.find_all("img")
+      #  urls = [img["src"] for img in image_tags]
+        #impe
 
+      #  downloader.download(query, limit=7, output_dir='static/teditImages', adult_filter_off=True, force_replace=False, timeout=60)
+       
        if not os.path.exists("static/teditImages"):
          os.makedirs("static/teditImages")
+       
+       counter = 0
+       results = downloader.download(paragraphs[0], limit=7, output_dir='static/teditImages', adult_filter_off=True, force_replace=False, timeout=60)
+       try:
+          for result in results:
+              if result['status'] == 'success':
+                  file_path = result['path']
+                  os.rename(file_path, f"static/teditImages/{counter}.jpg")
+                  counter += 1
+       except TypeError:
+            print(f"No images found for query ")
+
+      #  print(urls)
+
+       
+      #  # filter for larger-sized images and those that end with .jpg or .png
+      #  larger_urls = [url for url in urls if url.endswith('.jpg') or url.endswith('.png') and int(url.split('=')[-1].split('&')[0]) >= 900]
+       
+      #  # retrieve the first 7 images
+      #  first_7_urls = larger_urls[:7]
+      #  print(first_7_urls)
+      
+
+       
 
        for i, url in enumerate(urls):
-        try:
-            response = requests.get(url, stream=True)
-            filename = f"{i}.jpg"
-            filepath = os.path.join(pathTImg, filename)
-            
-            if os.path.exists(filepath):
-                os.remove(filepath)
-            
-            file = open(filepath, "wb")
-            for chunk in response.iter_content(1024):
-                file.write(chunk)
-            file.close()
-            
-            print(f"File {filename} downloaded successfully.")
-            
-        except:
-            print(f"Failed to download {url}")
+          try:
+              response = requests.get(url, stream=True)
+              filename = f"{i}.jpg"
+              filepath = os.path.join(pathTImg, filename)
+              
+              if os.path.exists(filepath):
+                  os.remove(filepath)
+              
+              file = open(filepath, "wb")
+              for chunk in response.iter_content(1024):
+                  file.write(chunk)
+              file.close()
+              
+              print(f"File {filename} downloaded successfully.")
+              
+          except:
+              print(f"Failed to download {url}")
 
-        return render_template('imageselect.html',Title = title, index=0, paragraph=paragraphs[0], img0=pathTImg+"/0.jpg", img1=pathTImg+"/1.jpg", img2=pathTImg+"/2.jpg", img3=pathTImg+"/3.jpg", img4=pathTImg+"/4.jpg", img5=pathTImg+"/5.jpg")
+       return render_template('imageselect.html',Title = title, index=0, paragraph=paragraphs[0], img0=pathTImg+"/0.jpg", img1=pathTImg+"/1.jpg", img2=pathTImg+"/2.jpg", img3=pathTImg+"/3.jpg", img4=pathTImg+"/4.jpg", img5=pathTImg+"/5.jpg")
 
 
 
@@ -184,10 +214,11 @@ def screen():
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     image_tags = soup.find_all("img")
-    urls = [img["src"] for img in image_tags][1:7]
+    urls = [img["src"] for img in image_tags]
+    
       
 
-        # Step 6: Download the images
+     # Step 6: Download the images
     if not os.path.exists("static/teditImages"):
       os.makedirs("static/teditImages")
 
