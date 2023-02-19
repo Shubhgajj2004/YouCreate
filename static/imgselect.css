@@ -21,6 +21,8 @@ body{
 
 .top{
     margin: 2vh;
+    /* margin-left: 4vh;
+    margin-right: 4vh; */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -115,4 +117,13 @@ textarea {
   textarea:focus {
       background: none repeat scroll 0 0 #FFFFFF;
       outline-width: 0;
+  }
+
+  .next:hover{
+    background-color: rgb(65, 156, 100);
+}
+
+
+.selected {
+    border: 3px solid rgb(119, 199, 99);
   }
