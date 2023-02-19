@@ -1,0 +1,134 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #303245;
+    font-family: sans-serif;
+}
+
+.top{
+    margin: 5vh 0 1vh 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+
+.comp{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.head{
+    margin-left: 20vh;
+    margin-top: 2vh;
+    flex: 3;
+    align-items: center;
+}
+
+.name{
+    margin-top: 5vh;
+}
+
+.logo{
+    border-radius: 50px;
+    margin-right: 5vh;
+}
+
+.content{
+    padding: 1vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between  ;
+    align-items: center;
+    margin: 1vh 25vh;
+}
+
+.title,.desc,.tags{
+    margin: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+h2, h3{
+    font-weight: 300;
+    color: white;
+    text-transform: uppercase;
+}
+
+h2{
+    font-size: 1.5em;
+}
+
+h3{
+    font-size: 1.5em;
+}
+
+p{
+    color: rgba(255,255,255,.75);
+    font-size: 1.4em;
+}
+
+input,button{
+    height: 7vh;
+    border-radius: 20px;
+    border-width: 0;
+    margin: 1vh;
+    font-size: larger;
+    width: 45vh;
+    padding: 5px;
+}
+
+.story, .title-ta{
+    margin: 1vh;
+    width: 45vh;
+    height: 14vh;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-radius: 5px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: #555555;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: larger;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+}
+
+.tags-ta{
+    margin: 1vh;
+    width: 70vh;
+    height: 25vh;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-radius: 20px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: #555555;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: larger;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+}
+
+.next:hover{
+    background-color: rgb(16, 233, 99);
+}

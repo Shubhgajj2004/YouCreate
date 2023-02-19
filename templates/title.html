@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>Edit title</title>
@@ -17,4 +17,62 @@
       <input type="submit" value="Next"/>
     </form>
   </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/title.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Edit title</title>
+</head>
+
+<body>
+    <div class="top">
+        <div class="comp">
+        <img src="static/logo.png" class="logo" height="100px" width="100px"/>
+        <h1 class="name">YouCreate</h1>
+        </div>
+        <div class="head">
+        <h1 class="tag-gen">Tag Generator</h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="ts">
+    <div class="title">
+        <h2>Title</h2>
+        <textarea type="text" class="title-ta">{{Title}}</textarea>
+    </div>
+    <div class="desc">
+        <h2>description</h2>
+        <textarea class="story">{{description}}</textarea>
+    </div>
+</div>
+<div class="right">
+    <div class="tags" id="tags">
+        <h3>Tags</h3>
+        <textarea class="tags-ta">{{Tag}}</textarea>
+    </div>
+    <div class="btn">
+      <form action="/aiTitle" method="post">
+        <input type="hidden" name="Title" value="{{Title}}"/>
+        <input type="hidden" name="story" value="{{ request.form['story'] }}"/>
+        <input type="submit" value="Next" class="next"/>
+      </form>
+        <!-- <button class="next">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button> -->
+    </div>
+    </div>
+</div>
+    <!-- <script>
+        function showTags() {
+            var tags = document.getElementById("tags");
+            tags.style.display = 'flex';
+            event.preventDefault(); 
+        }
+    </script> -->
+</body>
+
 </html>

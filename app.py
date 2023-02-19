@@ -13,7 +13,7 @@ import openai
 # new lib
 from bing_image_downloader import downloader
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 app = Flask(__name__)
 
@@ -118,11 +118,11 @@ def aiTitle():
        paragraphs = re.split(r"[.,]", story)
 
         #imps
-      #  url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:l,ic:color"
-      #  response = requests.get(url)
-      #  soup = BeautifulSoup(response.text, "html.parser")
-      #  image_tags = soup.find_all("img")
-      #  urls = [img["src"] for img in image_tags]
+       url = f"https://www.google.com/search?q={paragraphs[0]}&tbm=isch&tbs=isz:l,ic:color"
+       response = requests.get(url)
+       soup = BeautifulSoup(response.text, "html.parser")
+       image_tags = soup.find_all("img")
+       urls = [img["src"] for img in image_tags][1:7]
         #impe
 
       #  downloader.download(query, limit=7, output_dir='static/teditImages', adult_filter_off=True, force_replace=False, timeout=60)
@@ -130,16 +130,17 @@ def aiTitle():
        if not os.path.exists("static/teditImages"):
          os.makedirs("static/teditImages")
        
-       counter = 0
-       results = downloader.download(paragraphs[0], limit=7, output_dir='static/teditImages', adult_filter_off=True, force_replace=False, timeout=60)
-       try:
-          for result in results:
-              if result['status'] == 'success':
-                  file_path = result['path']
-                  os.rename(file_path, f"static/teditImages/{counter}.jpg")
-                  counter += 1
-       except TypeError:
-            print(f"No images found for query ")
+      #  counter = 1  # start counter at 1 instead of 0
+      #  results = downloader.download(paragraphs[0], limit=7, output_dir='static/teditImages', adult_filter_off=True, force_replace=False, timeout=60)
+
+      #  try:
+      #      for result in results:
+      #          if result['status'] == 'success':
+      #              file_path = result['path']
+      #              os.rename(file_path, f"static/teditImages/{counter}.jpg")
+      #              counter += 1  # increment counter to name next image
+      #  except TypeError:
+      #      print(f"No images found for query")
 
       #  print(urls)
 
@@ -214,7 +215,7 @@ def screen():
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     image_tags = soup.find_all("img")
-    urls = [img["src"] for img in image_tags]
+    urls = [img["src"] for img in image_tags][1:7]
     
       
 

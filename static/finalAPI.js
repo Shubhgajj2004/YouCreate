@@ -104,6 +104,13 @@ const images = document.querySelectorAll(".final-image");
 images.forEach((image) => {
   image.addEventListener("click", function () {
     idImg = image.id;
+    // Remove "selected" class from all images
+    images.forEach(img => {
+      img.classList.remove('selected');
+    });
+
+    // Add "selected" class to clicked image
+    this.classList.add('selected');
   });
 });
 

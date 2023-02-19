@@ -122,3 +122,8 @@ textarea {
   .next:hover{
     background-color: rgb(65, 156, 100);
 }
+
+
+.selected {
+    border: 3px solid rgb(119, 199, 99);
+  }
